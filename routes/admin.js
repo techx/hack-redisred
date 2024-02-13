@@ -7,6 +7,7 @@ module.exports = function(frontend, api) {
   var apiRouter = express.Router();
   apiRouter.use(bodyParser.json());
   apiRouter.get('/', api.authenticate, api.getAllRedirects);
+  apiRouter.get('/get', api.authenticate, api.getRedirect);
   apiRouter.post('/create', api.authenticate, api.createRedirect);
   apiRouter.post('/delete', api.authenticate, api.deleteRedirect);
 

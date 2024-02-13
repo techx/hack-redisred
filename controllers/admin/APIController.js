@@ -17,6 +17,22 @@ module.exports = function(redis, apiToken) {
       sendJSON(res, { error: "You failed to authenticate with the correct token." }, 403);
   };
 
+  APIController.getRedirect = function(req, res) {
+    var key = req.query.key;
+    if (!key) {
+      res.status(400).send("You failed to supply all of the parameters.");
+      return;
+    }
+    Redirect.get(key, function(err, redirect) {
+      if (err)
+        res.status(500).send(err);
+      else if (!redirect)
+        sendJSON(res, {});
+      else
+        sendJSON(res, redirect);
+    });
+  };
+
   APIController.getAllRedirects = function(req, res) {
     Redirect.getAll(function(err, redirects) {
       if (err)
