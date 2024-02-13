@@ -29,6 +29,7 @@ Password: `testing`
 All requests must be authenticated with a `x-access-token` header.
 
 - `GET /admin/api/` returns a json of all the redirects
+- `GET /admin/api/get` returns a redirect with parameters `key` if it exists
 - `POST /admin/api/create` creates a redirect with parameters `key` and `url`
 - `POST /admin/api/delete` deletes a redirect with parameter `key`
 
